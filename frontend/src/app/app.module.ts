@@ -25,11 +25,11 @@ import { LaunchComponent } from './pages/launch/launch.component';
 import { LaunchesComponent } from './pages/launches/launches.component';
 import { CategoryComponent } from './pages/category/category.component';
 import { CategoriesComponent } from './pages/categories/categories.component';
-
-import { CategoryService } from './services/category.service';
 import { ActionsComponent } from './shared/actions/actions.component';
 import { ButtonGroupComponent } from './shared/button-group/button-group.component';
 import { ConfirmationDialogComponent } from './shared/confirmation-dialog/confirmation-dialog.component';
+
+import { CategoryService } from './services/category.service';
 import { LaunchService } from './services/launch.service';
 
 @NgModule({
