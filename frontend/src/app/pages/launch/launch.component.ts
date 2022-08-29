@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, Inject, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { DateAdapter } from '@angular/material/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Category } from 'src/app/models/category.model';
 
+import { Category } from 'src/app/models/category.model';
 import { CategoryService } from '../../services/category.service';
 import { LaunchService } from '../../services/launch.service';
 
 @Component({
   selector: 'app-launch',
   templateUrl: './launch.component.html',
-  styleUrls: ['./launch.component.scss']
+  styleUrls: ['./launch.component.scss']   
 })
 export class LaunchComponent implements OnInit {
 
@@ -21,9 +22,11 @@ export class LaunchComponent implements OnInit {
     private router: Router,
     private launchService: LaunchService,
     private categoryService: CategoryService,
-    private formBuilder: FormBuilder) { }
+    private formBuilder: FormBuilder,
+    private dateAdapter: DateAdapter<any>) { }
 
   ngOnInit(): void {
+    this.dateAdapter.setLocale('pt-BR');
     this.buildLaunchFormGroup();
     this.getCategories();
 
@@ -34,11 +37,12 @@ export class LaunchComponent implements OnInit {
         this.launchService
             .getLaunch(this.id)
             .subscribe(launch => {
+              const [day, month, year] = launch.date.split('/');
               this.launchForm.setValue({ 
                 id: launch?.id,
                 idCategoria: launch.idCategoria,
                 description: launch.description,
-                date: launch.date,
+                date: new Date(parseInt(year), parseInt(month), parseInt(day)).toLocaleDateString(),
                 value: launch.value
               });
             });
@@ -57,7 +61,7 @@ export class LaunchComponent implements OnInit {
       id: [''],
       idCategoria: ['', Validators.required],
       description: ['', Validators.required],
-      date: ['', Validators.required],
+      date: [new FormControl<Date | null>(null), Validators.required],
       value: ['', Validators.required]      
     });
   }

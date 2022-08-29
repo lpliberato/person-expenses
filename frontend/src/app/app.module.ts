@@ -17,6 +17,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSelectModule } from '@angular/material/select';
+import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -29,7 +30,6 @@ import { CategoryService } from './services/category.service';
 import { ActionsComponent } from './shared/actions/actions.component';
 import { ButtonGroupComponent } from './shared/button-group/button-group.component';
 import { ConfirmationDialogComponent } from './shared/confirmation-dialog/confirmation-dialog.component';
-import { MatNativeDateModule, MAT_DATE_FORMATS } from '@angular/material/core';
 import { LaunchService } from './services/launch.service';
 
 @NgModule({
@@ -66,20 +66,7 @@ import { LaunchService } from './services/launch.service';
   providers: [
     CategoryService,
     LaunchService,
-    {
-      provide: MAT_DATE_FORMATS,
-      useValue: {
-        parse: {
-          dateInput: ['l', 'LL'],
-        },
-        display: {
-          dateInput: 'L',
-          monthYearLabel: 'MMM YYYY',
-          dateA11yLabel: 'LL',
-          monthYearA11yLabel: 'MMMM YYYY',
-        },
-      },
-    }    
+    { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' }  
   ],
   bootstrap: [AppComponent]
 })
