@@ -11,12 +11,7 @@ export class ConfirmationDialogComponent implements OnInit {
   @Output() confirm = new EventEmitter<void>();
   @Output() cancel = new EventEmitter<void>();
 
-  _data: any
-
-  constructor(public dialogRef: MatDialogRef<ConfirmationDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: any) {
-    this._data = data;
-  }
+  constructor(public dialogRef: MatDialogRef<ConfirmationDialogComponent>) {}
 
   ngOnInit(): void {
   }
