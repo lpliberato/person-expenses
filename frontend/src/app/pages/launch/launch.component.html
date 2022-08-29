@@ -1,0 +1,27 @@
+<form class="form-container" [formGroup]="launchForm">
+    <div class="inputs">
+        <mat-form-field class="full-width" appearance="fill">
+          <mat-label>Id Categoria</mat-label>
+          <input matInput placeholder="Ex. Categoria" value="" formControlName="idCategoria">
+        </mat-form-field>
+
+        <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Descrição</mat-label>
+            <input matInput placeholder="Ex. Despesas com internet" value="" formControlName="description">
+        </mat-form-field>
+          
+          
+        <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Valor</mat-label>
+            <input type="number" matInput placeholder="Ex. 10.00" value="" formControlName="value">
+        </mat-form-field>
+
+        <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Data</mat-label>
+            <input type="date" matInput placeholder="Ex. 01/01/2022" value="" formControlName="date">
+        </mat-form-field>
+    </div>
+    <div class="buttons">
+        <app-button-group (cancel)="cancel()" (confirm)="confirm()" [disabled]="!launchForm.valid"></app-button-group>
+    </div>
+</form>

@@ -1,0 +1,18 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button class="icon" (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <span class="title">Lançamento de gastos pessoais</span>
+</mat-toolbar>
+<mat-drawer-container class="example-container">
+    <mat-drawer mode="side" #drawer>
+        <mat-selection-list role="list">
+            <mat-list-item role="listitem" (click)="drawer.toggle()" [routerLink]="['']">Home</mat-list-item>
+            <mat-list-item role="listitem" (click)="drawer.toggle()" [routerLink]="['/categories']">Categorias</mat-list-item>
+            <mat-list-item role="listitem" (click)="drawer.toggle()" [routerLink]="['/launches']">Lançamentos</mat-list-item>
+        </mat-selection-list>        
+    </mat-drawer>
+    <mat-drawer-content>
+        <router-outlet></router-outlet>
+    </mat-drawer-content>
+</mat-drawer-container>

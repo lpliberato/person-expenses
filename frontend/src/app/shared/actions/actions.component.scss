@@ -1,0 +1,18 @@
+.button-icon {
+    height: 32px;
+    border: transparent;
+    outline: transparent;
+    background-color: transparent;
+    cursor: pointer;
+    border-radius: 500px;
+
+    &:hover {
+        background: rgba(0,0,0,.04);
+    }
+}
+
+.button-icon-container {
+    .button-icon:not(:last-of-type) {
+        margin-right: 8px;
+    }
+}

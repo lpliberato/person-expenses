@@ -1,0 +1,32 @@
+.icon {
+    outline: transparent;
+    border: transparent;
+    color: #FFFFFF;
+    background-color: #3f51b5;
+}
+
+.title {
+    margin-left: 24px;
+}
+
+mat-drawer {
+    width: 200px;
+}
+
+mat-drawer-container {
+    height: 100%;
+    width: 100%;
+}
+
+mat-list-item {
+    cursor: pointer;
+    margin-left: 24px;
+
+     &:hover {
+        background: rgba(0,0,0,.04);
+     }
+}
+
+mat-toolbar {
+    width: 100%;
+}
