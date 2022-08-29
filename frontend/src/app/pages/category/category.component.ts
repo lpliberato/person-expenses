@@ -46,9 +46,9 @@ export class CategoryComponent implements OnInit {
 
   confirm(): void {
     if (!this.id) {
-    this.categoryService
-        .createCategory(this.categoryForm.getRawValue())
-        .subscribe(() => this.router.navigateByUrl('/categories'));
+      this.categoryService
+          .createCategory(this.categoryForm.getRawValue())
+          .subscribe(() => this.router.navigateByUrl('/categories'));
     } else {
       this.router.navigateByUrl('/categories');
     }
