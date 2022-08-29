@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Category } from 'src/app/models/category.model';
+
+import { CategoryService } from '../../services/category.service';
 import { LaunchService } from '../../services/launch.service';
 
 @Component({
@@ -9,16 +12,21 @@ import { LaunchService } from '../../services/launch.service';
   styleUrls: ['./launch.component.scss']
 })
 export class LaunchComponent implements OnInit {
+
+  categories: Category[] = [];
   launchForm!: FormGroup;
   private id: string = '';
 
   constructor(private route: ActivatedRoute,
     private router: Router,
     private launchService: LaunchService,
+    private categoryService: CategoryService,
     private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.buildLaunchFormGroup();
+    this.getCategories();
+
     this.route.params.subscribe(parameter => {
       this.id = parameter['id'];
 
@@ -36,6 +44,12 @@ export class LaunchComponent implements OnInit {
             });
       }
     });
+  }
+
+  getCategories(): void {
+    this.categoryService
+        .getCategories()
+        .subscribe(categories => this.categories = categories);
   }
 
   buildLaunchFormGroup(): void {
